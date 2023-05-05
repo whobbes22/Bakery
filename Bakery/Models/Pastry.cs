@@ -6,7 +6,7 @@ namespace Bakery.Models
   public class Pastry : Bread
   {
     
-    public Pastry(int cost, int discount)
+    public Pastry(int cost, int discount) : base(cost,discount)
     {
       Cost = cost;
       DiscountAmount = discount;
