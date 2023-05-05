@@ -4,12 +4,10 @@ namespace Bakery.Models
 {
   public class Bread
   {
-    public int Amount{get;set;}
     public int Cost{get;set;}
     public int DiscountAmount{get;set;}
-    public Bread(int amount,int cost, int discount)
+    public Bread(int cost, int discount)
     {
-      Amount = amount;
       Cost = cost;
       DiscountAmount = discount;
     }
