@@ -6,6 +6,8 @@ namespace Bakery.Models
   public class Pastry : Bread
   {
     
+    public static Dictionary<string,int[]> Dict = new Dictionary<string, int[]>();
+
     public Pastry(int cost, int discount) : base(cost,discount)
     {
       Cost = cost;
@@ -14,6 +16,18 @@ namespace Bakery.Models
   }
 }
 
+/*
+
+dictionary to hold information
+
+Dictonary -> key and value
+key will be the item
+value will be amount, cost and discount in an array
+ui will force bread and pastry keys
+store owner will have to add others.
+
+
+*/
 
 
 /*
