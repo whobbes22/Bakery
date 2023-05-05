@@ -32,6 +32,13 @@ namespace Bakery.Tests
       int breadCost = bread.Cost;
       Assert.AreEqual(cost,breadCost);
     }
-
+    [TestMethod]
+    public void GetDiscount_ReturnDiscount_int()
+    {
+      int discount = 3;
+      Bread bread = new Bread(2,2,discount);
+      int breadDiscount = bread.DiscountAmount;
+      Assert.AreEqual(discount,breadDiscount);
+    }
   }
 }
