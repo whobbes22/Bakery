@@ -6,6 +6,10 @@ namespace Bakery.Tests
   [TestClass]
   public class BakeryTests
   {
-    
+    [TestMethod]
+    public void BreadConstructor_CreateInstanceOfBread_Bread()
+    {
+      Bread bread = new Bread(2,5,3);
+    }
   }
 }
