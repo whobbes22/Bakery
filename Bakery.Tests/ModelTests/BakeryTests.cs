@@ -40,5 +40,16 @@ namespace Bakery.Tests
       int breadDiscount = bread.DiscountAmount;
       Assert.AreEqual(discount,breadDiscount);
     }
+
+    [TestMethod]
+    public void FindDiscountedCost_ReturnActualCost_int()
+    {
+      int amount = 3;
+      Bread bread = new Bread(5,3);
+      int discountedPrice = bread.FindDiscountedPrice(amount);
+      Assert.AreEqual(discountedPrice,10);
+    }
+    
   }
+  
 }
