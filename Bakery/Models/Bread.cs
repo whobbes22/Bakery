@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Bakery.Models
@@ -10,6 +11,13 @@ namespace Bakery.Models
     {
       Cost = cost;
       DiscountAmount = discount;
+    }
+
+    public int FindDiscountedPrice(int amount)
+    {
+      // integers should round down automaticall with division
+      // count * cost - ([count / discount] rounded down * cost)
+      return  amount * Cost - (amount / DiscountAmount * Cost);
     }
   }
 }
