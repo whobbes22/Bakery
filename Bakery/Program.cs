@@ -22,13 +22,28 @@ namespace Bakery
       Console.WriteLine("Enter 3 (3), if you accidently came into the store and want to leave.");
       string choice = Console.ReadLine();
       
+      Bread bread = new Bread(5,2);
+      Pastry pastry = new Pastry(2,4,"pastry");
+
+      if(choice == "1")
+      {
+        ShowMenu(bread,pastry);
+      } else if(choice == "2")
+      {
+        AddToMenu(pastry);
+      }
 
     }
 
-    static void ShowMenu()
+    static void AddToMenu(Pastry pastry)
     {
-      Bread bread = new Bread(5,2);
-      Pastry pastry = new Pastry(2,4,"pastry");
+      Console.WriteLine("Here you will set up your menu prices");
+      Console.WriteLine("To enter a new food enter the name of the food, the cost of the food.");
+    }
+
+    static void ShowMenu(Bread bread,Pastry pastry)
+    {
+
 
       Console.WriteLine($"Please Enter which item you would like to buy");
       Console.WriteLine($"Menu");

@@ -17,7 +17,11 @@ namespace Bakery.Models
     {
       // integers should round down automaticall with division
       // count * cost - ([count / discount] rounded down * cost)
-      return  amount * Cost - (amount / DiscountAmount * Cost);
+      int discount = 0;
+      if(DiscountAmount > 0){
+        discount = amount / DiscountAmount * Cost;
+      }
+      return  amount * Cost - discount;
     }
   }
 }
