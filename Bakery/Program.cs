@@ -16,29 +16,56 @@ namespace Bakery
                             __/ |
                            |___/ ");
       Console.WriteLine("\nWelcome to the Bakery\n");
-      
-      Console.WriteLine("Enter 1 (1), if you are a customer and looking to buy.");
-      Console.WriteLine("Enter 2 (2), if you are the owner and trying to update the menu");
-      Console.WriteLine("Enter 3 (3), if you accidently came into the store and want to leave.");
-      string choice = Console.ReadLine();
-      
+      bool repeat = true;
       Bread bread = new Bread(5,2);
       Pastry pastry = new Pastry(2,4,"pastry");
-
-      if(choice == "1")
+      while(repeat)
       {
-        ShowMenu(bread,pastry);
-      } else if(choice == "2")
-      {
-        AddToMenu(pastry);
+        Console.WriteLine("Enter 1 (1), if you are a customer and looking to buy.");
+        Console.WriteLine("Enter 2 (2), if you are the owner and trying to update the menu.");
+        Console.WriteLine("Enter 3 (3), if you accidently came into the store and want to leave.");
+        string choice = Console.ReadLine();
+        
+        if(choice == "1")
+        {
+          ShowMenu(bread,pastry);
+        } else if(choice == "2")
+        {
+          AddToMenu(pastry);
+        } else
+        {
+          repeat = false;
+        }
       }
+      Console.WriteLine("C ya!");
 
     }
 
     static void AddToMenu(Pastry pastry)
     {
-      Console.WriteLine("Here you will set up your menu prices");
-      Console.WriteLine("To enter a new food enter the name of the food, the cost of the food.");
+      Console.WriteLine("\nHere you will set up your menu prices");
+      Console.WriteLine("To enter a new food enter the name of the food, the cost of the food, and the discount after buy 'x' amount of items getting 1 free of that item (0 means no discount)");
+      // Console.WriteLine("Example input ->'chocolate cake',15,0 -> would make a chocolate cake priced at $15 with no discount");
+      Console.Write("Enter Name of item: ");
+      string key = Console.ReadLine();
+      Console.Write("Enter Price of item: ");
+      int price = int.Parse(Console.ReadLine());
+      Console.Write("Enter Discount of Item: ");
+      int dcPrice = int.Parse(Console.ReadLine());
+
+      pastry.AddToMenuDictionary(key,price,dcPrice);
+
+      Console.WriteLine("Thank you, New item added to the menu.\n");
+      Console.WriteLine("Would you like to add another item yes (y), no (n)");
+      string choice = Console.ReadLine();
+      if(choice == "y")
+      {
+        AddToMenu(pastry);
+      } else
+      {
+        Console.WriteLine("Bye\n");
+      }
+
     }
 
     static void ShowMenu(Bread bread,Pastry pastry)

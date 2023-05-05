@@ -20,6 +20,13 @@ namespace Bakery.Models
     {
       return MenuList;
     }
+
+    public void AddToMenuDictionary(string key,int cost,int dcPrice)
+    {
+     int[] arr = {0,cost,dcPrice};
+      MenuList.Add(key,arr);
+
+    }
   }
 }
 
