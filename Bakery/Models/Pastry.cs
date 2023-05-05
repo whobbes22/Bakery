@@ -1,6 +1,17 @@
+using System;
+using System.Collections.Generic;
+
 namespace Bakery.Models
 {
-  
+  public class Pastry : Bread
+  {
+    
+    public Pastry(int cost, int discount)
+    {
+      Cost = cost;
+      DiscountAmount = discount;
+    }
+  }
 }
 
 
