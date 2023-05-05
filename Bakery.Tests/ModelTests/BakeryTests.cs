@@ -40,6 +40,18 @@ namespace Bakery.Tests
       int discountedPrice = bread.FindDiscountedPrice(amount);
       Assert.AreEqual(discountedPrice,10);
     }
+
+    //tests for Pastry
+
+    [TestMethod]
+    public void FindDiscountedCostPastry_ReturnActualCost_int()
+    {
+      int amount = 4;
+      Pastry pastry = new Pastry(2,4);
+      int dP = pastry.FindDiscountedPrice(amount);
+      Assert.AreEqual(dP,6);
+      
+    }
     
   }
   
