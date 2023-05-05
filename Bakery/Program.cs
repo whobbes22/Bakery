@@ -35,10 +35,12 @@ namespace Bakery
       Console.WriteLine($"The Price for bread (bread) is 5$ with a discount of buy 2 get 1 free");
       Console.WriteLine($"The Price for a pastry (pastry) is 2$ with a discount of buy 4 get 1 free");
 
-      string choice = Console.ReadLine();
+      string choice = (Console.ReadLine()).ToLower();
+      int amount = BuyAmount();
+
     }
    
-   static int BuyItem()
+   static int BuyAmount()
    {
     Console.WriteLine("Please Enter a number for how many you would like to buy. The discount will automatically be apllied.");
     Console.WriteLine("If you want to go back enter any other character");
