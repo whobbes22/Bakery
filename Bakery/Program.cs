@@ -28,7 +28,7 @@ namespace Bakery
     static void ShowMenu()
     {
       Bread bread = new Bread(5,2);
-      Pastry pastry = new Pastry(2,4);
+      Pastry pastry = new Pastry(2,4,"pastry");
 
       Console.WriteLine($"Please Enter which item you would like to buy");
       Console.WriteLine($"Menu");

@@ -6,12 +6,19 @@ namespace Bakery.Models
   public class Pastry : Bread
   {
     
-    public static Dictionary<string,int[]> Dict = new Dictionary<string, int[]>();
+    public static Dictionary<string,int[]> MenuList = new Dictionary<string, int[]>();
 
-    public Pastry(int cost, int discount) : base(cost,discount)
+    public Pastry(int cost, int discount,string name) : base(cost,discount)
     {
       Cost = cost;
       DiscountAmount = discount;
+      int[] value = {0,cost,discount};
+      MenuList.Add(name,value);
+    }
+
+    public static Dictionary<string,int[]> GetAll()
+    {
+      return MenuList;
     }
   }
 }
