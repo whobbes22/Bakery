@@ -1,5 +1,5 @@
 using System;
-using ShapeTracker.Models;
+using Bakery.Models;
 
 namespace Bakery
 {
@@ -7,7 +7,7 @@ namespace Bakery
   {
     static void Main()
     {
-      Console.WriteLine("Hi");
+      
     }
   }
 }
