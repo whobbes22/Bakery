@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Bakery.Models;
 
 namespace Bakery
@@ -17,7 +18,8 @@ namespace Bakery
                            |___/ ");
       Console.WriteLine("\nWelcome to the Bakery\n");
       bool repeat = true;
-      Bread bread = new Bread(5,2);
+      //Bread bread = new Bread(5,2);
+      Pastry bread = new Pastry(5,2,"bread");
       Pastry pastry = new Pastry(2,4,"pastry");
       while(repeat)
       {
@@ -28,7 +30,7 @@ namespace Bakery
         
         if(choice == "1")
         {
-          ShowMenu(bread,pastry);
+          ShowMenu(pastry);
         } else if(choice == "2")
         {
           AddToMenu(pastry);
@@ -74,14 +76,19 @@ namespace Bakery
 
     }
 
-    static void ShowMenu(Bread bread,Pastry pastry)
+    static void ShowMenu(Pastry pastry)
     {
-
-
-      Console.WriteLine($"Please Enter which item you would like to buy");
-      Console.WriteLine($"Menu");
-      Console.WriteLine($"The Price for bread (bread) is 5$ with a discount of buy 2 get 1 free");
-      Console.WriteLine($"The Price for a pastry (pastry) is 2$ with a discount of buy 4 get 1 free");
+      Dictionary<string,int[]> menuList = Pastry.GetAll();
+      int index = 1;
+      foreach(KeyValuePair<string,int[]> kvp in menuList)
+      {
+        if(kvp.Value[2] > 0){
+          Console.WriteLine($"{index}: The price for {kvp.Key} ({kvp.Key} is {kvp.Value[1]}$ with a discount of buy {kvp.Value[2]} get 1 free)");
+        } else
+        {
+          Console.WriteLine($"{index}: The price for {kvp.Key} ({kvp.Key} is {kvp.Value[1]}$ with no discount");
+        }
+      }
 
       string choice = (Console.ReadLine()).ToLower();
       int amount = BuyAmount();
