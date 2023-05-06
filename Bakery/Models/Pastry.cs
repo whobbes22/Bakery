@@ -21,6 +21,11 @@ namespace Bakery.Models
       return MenuList;
     }
 
+    public  void AddAmountToKey(string key,int amount)
+    {
+      MenuList[key][1] = amount;
+    }
+
     public void AddToMenuDictionary(string key,int cost,int dcPrice)
     {
      int[] arr = {0,cost,dcPrice};

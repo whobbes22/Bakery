@@ -80,24 +80,44 @@ namespace Bakery
     {
       Dictionary<string,int[]> menuList = Pastry.GetAll();
       int index = 1;
+      int totalPrice = 0;
+      Console.WriteLine("");
       foreach(KeyValuePair<string,int[]> kvp in menuList)
       {
         if(kvp.Value[2] > 0){
-          Console.WriteLine($"{index}: The price for {kvp.Key} ({kvp.Key} is {kvp.Value[1]}$ with a discount of buy {kvp.Value[2]} get 1 free)");
+          Console.WriteLine($"{index}: The price for {kvp.Key} ({kvp.Key} is ${kvp.Value[1]} with a discount of buy {kvp.Value[2]} get 1 free : current amount - {kvp.Value[0]}");
         } else
         {
-          Console.WriteLine($"{index}: The price for {kvp.Key} ({kvp.Key} is {kvp.Value[1]}$ with no discount");
+          Console.WriteLine($"{index}: The price for {kvp.Key} ({kvp.Key} is ${kvp.Value[1]} with no discount : current amount - {kvp.Value[0]}");
         }
+        index++;
+        totalPrice += pastry.FindDiscountedPrice(kvp.Value[0]);
       }
-
+      Console.WriteLine($"\nyour current Total price is ${totalPrice}");
       string choice = (Console.ReadLine()).ToLower();
       int amount = BuyAmount();
+      pastry.AddAmountToKey(choice,amount);
+
+      Console.WriteLine("Would you like to purchase anything else? (y) (n)");
+      string againChoice = Console.ReadLine().ToLower();
+      if(againChoice == "y")
+      {
+        ShowMenu(pastry);
+      } else
+      {
+        totalPrice = 0;
+        foreach(KeyValuePair<string,int[]> kvp in menuList)
+        {
+          totalPrice += pastry.FindDiscountedPrice(kvp.Value[0]);
+        }
+        Console.WriteLine($"\nThanks for your purchase! Your total price is ${totalPrice}");
+      }
 
     }
    
    static int BuyAmount()
    {
-    Console.WriteLine("Please Enter a number for how many you would like to buy. The discount will automatically be apllied.");
+    Console.WriteLine("\nPlease Enter a number for how many you would like to buy. The discount will automatically be apllied.");
     Console.WriteLine("If you want to go back enter any other character");
     int choice;
     try
@@ -106,7 +126,7 @@ namespace Bakery
     }
     catch
     {
-      choice = -1;
+      choice = 0;
     }
     return choice;
    }
