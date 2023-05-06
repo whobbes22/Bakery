@@ -28,9 +28,11 @@ namespace Bakery.Models
 
     public void AddToMenuDictionary(string key,int cost,int dcPrice)
     {
-     int[] arr = {0,cost,dcPrice};
+      int[] arr = {0,cost,dcPrice};
       MenuList.Add(key,arr);
-
+      Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~");
+      Console.WriteLine(MenuList[key][0]);
+      Console.WriteLine(MenuList.Values);
     }
   }
 }

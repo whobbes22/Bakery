@@ -25,7 +25,7 @@ namespace Bakery
       {
         Console.WriteLine("Enter 1 (1), if you are a customer and looking to buy.");
         Console.WriteLine("Enter 2 (2), if you are the owner and trying to update the menu.");
-        Console.WriteLine("Enter 3 (3), if you accidently came into the store and want to leave.");
+        Console.WriteLine("Enter 3 (3), if you want to leave.");
         string choice = Console.ReadLine();
         
         if(choice == "1")
@@ -85,17 +85,19 @@ namespace Bakery
       foreach(KeyValuePair<string,int[]> kvp in menuList)
       {
         if(kvp.Value[2] > 0){
-          Console.WriteLine($"{index}: The price for {kvp.Key} ({kvp.Key} is ${kvp.Value[1]} with a discount of buy {kvp.Value[2]} get 1 free : current amount - {kvp.Value[0]}");
+          Console.WriteLine($"({kvp.Key}): The price for {kvp.Key} is ${kvp.Value[1]} with a discount of buy {kvp.Value[2]} get 1 free : current amount - {kvp.Value[0]}");
         } else
         {
-          Console.WriteLine($"{index}: The price for {kvp.Key} ({kvp.Key} is ${kvp.Value[1]} with no discount : current amount - {kvp.Value[0]}");
+          Console.WriteLine($"({kvp.Key}): The price for {kvp.Key} is ${kvp.Value[1]} with no discount : current amount - {kvp.Value[0]}");
         }
+        Console.WriteLine($"{kvp.Value[0]}");
         index++;
         totalPrice += pastry.FindDiscountedPrice(kvp.Value[0]);
       }
       Console.WriteLine($"\nyour current Total price is ${totalPrice}");
       string choice = (Console.ReadLine()).ToLower();
       int amount = BuyAmount();
+      Console.WriteLine($"amount = {amount}");
       pastry.AddAmountToKey(choice,amount);
 
       Console.WriteLine("Would you like to purchase anything else? (y) (n)");
@@ -110,7 +112,7 @@ namespace Bakery
         {
           totalPrice += pastry.FindDiscountedPrice(kvp.Value[0]);
         }
-        Console.WriteLine($"\nThanks for your purchase! Your total price is ${totalPrice}");
+        Console.WriteLine($"\nThanks for your purchase! Your total price is ${totalPrice}\n");
       }
 
     }
