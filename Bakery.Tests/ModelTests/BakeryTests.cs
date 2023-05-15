@@ -44,6 +44,14 @@ namespace Bakery.Tests
     //tests for Pastry
 
     [TestMethod]
+    public void PastryConstructor_CreateInstanceOfPastry_Pastry()
+    {
+      Pastry pat = new Pastry(5,3,"pasty");
+      Assert.AreEqual(typeof(Pastry), pat.GetType());
+    }
+
+
+    [TestMethod]
     public void FindDiscountedCostPastry_ReturnActualCost_int()
     {
       int amount = 4;
