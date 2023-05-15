@@ -83,28 +83,57 @@ namespace Bakery
 
     static void ShowMenu(Pastry pastry)
     {
+      Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      Console.WriteLine("          The Menu");
+      Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
       Dictionary<string,int[]> menuList = Pastry.GetAll();
       int index = 1;
       int totalPrice = 0;
       Console.WriteLine("");
       foreach(KeyValuePair<string,int[]> kvp in menuList)
       {
+        int itemCost = pastry.FindDiscountedPrice(kvp.Value[0],kvp.Value[1],kvp.Value[2]);
+        totalPrice += itemCost;
         if(kvp.Value[2] > 0){
-          Console.WriteLine($"({kvp.Key}): The price for {kvp.Key} is ${kvp.Value[1]} with a discount of buy {kvp.Value[2]} get 1 free : current amount - {kvp.Value[0]}");
+          Console.WriteLine($"({kvp.Key}): The price for {kvp.Key} is ${kvp.Value[1]} with a discount of buy {kvp.Value[2]} get 1 free : current amount - {kvp.Value[0]} - ${itemCost}");
         } else
         {
           Console.WriteLine($"({kvp.Key}): The price for {kvp.Key} is ${kvp.Value[1]} with no discount : current amount - {kvp.Value[0]}");
         }
         Console.WriteLine($"{kvp.Value[0]}");
         index++;
-        totalPrice += pastry.FindDiscountedPrice(kvp.Value[0],kvp.Value[1],kvp.Value[2]);
+        
       }
-      Console.WriteLine($"\nyour current Total price is ${totalPrice}");
-      string choice = (Console.ReadLine()).ToLower();
-      int amount = BuyAmount();
-      Console.WriteLine($"amount = {amount}");
-      pastry.AddAmountToKey(choice,amount);
 
+      // user input to find dictionary key
+      Console.WriteLine($"\nyour current Total price is ${totalPrice}");
+      
+
+      bool correctResponse = false;
+      while (!correctResponse)
+      {
+        Console.Write("Enter (item) or (exit): ");
+        string choice = (Console.ReadLine()).ToLower();
+
+        if(menuList.ContainsKey(choice))
+        {
+          int amount = BuyAmount();
+          Console.WriteLine($"amount = {amount}");
+          pastry.AddAmountToKey(choice,amount);
+          correctResponse = true;
+        } else if (choice == "exit")
+        {
+          correctResponse = true;
+        } else 
+        {
+          Console.WriteLine("Please enter an item in the \"()\" to buy that item. \"()\" not included.");
+        }
+
+
+
+      }
+      
+ 
 // check total price again
       totalPrice = 0;
       foreach(KeyValuePair<string,int[]> kvp in menuList)
