@@ -17,10 +17,11 @@ namespace Bakery
                             __/ |
                            |___/ ");
       Console.WriteLine("\nWelcome to the Bakery\n");
-      bool repeat = true;
+    
       //Bread bread = new Bread(5,2);
       Pastry bread = new Pastry(5,2,"bread");
       Pastry pastry = new Pastry(2,4,"pastry");
+      bool repeat = true;
       while(repeat)
       {
         Console.WriteLine("Enter 1 (1), if you are a customer and looking to buy.");
@@ -43,6 +44,7 @@ namespace Bakery
 
     }
 
+//Add items to menu
     static void AddToMenu(Pastry pastry)
     {
       Console.WriteLine("\nHere you will set up your menu prices");
@@ -76,6 +78,9 @@ namespace Bakery
 
     }
 
+
+// Here is showing the menu to the user.
+
     static void ShowMenu(Pastry pastry)
     {
       Dictionary<string,int[]> menuList = Pastry.GetAll();
@@ -100,6 +105,14 @@ namespace Bakery
       Console.WriteLine($"amount = {amount}");
       pastry.AddAmountToKey(choice,amount);
 
+// check total price again
+      totalPrice = 0;
+      foreach(KeyValuePair<string,int[]> kvp in menuList)
+      {
+        totalPrice += pastry.FindDiscountedPrice(kvp.Value[0]);
+      }
+      Console.WriteLine($"Your total price is ${totalPrice}");
+
       Console.WriteLine("Would you like to purchase anything else? (y) (n)");
       string againChoice = Console.ReadLine().ToLower();
       if(againChoice == "y")
@@ -107,20 +120,15 @@ namespace Bakery
         ShowMenu(pastry);
       } else
       {
-        totalPrice = 0;
-        foreach(KeyValuePair<string,int[]> kvp in menuList)
-        {
-          totalPrice += pastry.FindDiscountedPrice(kvp.Value[0]);
-        }
-        Console.WriteLine($"\nThanks for your purchase! Your total price is ${totalPrice}\n");
+        Console.WriteLine($"\nThanks for your purchase!\n");
       }
-
     }
    
    static int BuyAmount()
    {
     Console.WriteLine("\nPlease Enter a number for how many you would like to buy. The discount will automatically be apllied.");
     Console.WriteLine("If you want to go back enter any other character");
+    Console.Write("Amount: ");
     int choice;
     try
     {

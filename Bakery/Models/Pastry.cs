@@ -21,9 +21,10 @@ namespace Bakery.Models
       return MenuList;
     }
 
-    public  void AddAmountToKey(string key,int amount)
+    public void AddAmountToKey(string key,int amount)
     {
-      MenuList[key][1] = amount;
+      MenuList[key][0] = amount; // I think this is not correct
+
     }
 
     public void AddToMenuDictionary(string key,int cost,int dcPrice)
@@ -31,8 +32,8 @@ namespace Bakery.Models
       int[] arr = {0,cost,dcPrice};
       MenuList.Add(key,arr);
       Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~");
-      Console.WriteLine(MenuList[key][0]);
-      Console.WriteLine(MenuList.Values);
+      Console.WriteLine($"Amount: {MenuList[key][0]}, Cost: {MenuList[key][1]}, Discount: {MenuList[key][2]}");
+      //Console.WriteLine($"menuList. values: {MenuList.Values}");
     }
   }
 }
