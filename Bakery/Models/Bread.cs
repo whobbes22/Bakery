@@ -13,15 +13,17 @@ namespace Bakery.Models
       DiscountAmount = discount;
     }
 
-    public int FindDiscountedPrice(int amount)
+// cost 5 discount 2 -> buy 2 get 1 free
+    public int FindDiscountedPrice(int amount, int cost, int dcAmount)
     {
+    
       // integers should round down automaticall with division
       // count * cost - ([count / discount] rounded down * cost)
       int discount = 0;
-      if(DiscountAmount > 0){
-        discount = amount / DiscountAmount * Cost;
+      if(dcAmount > 0){
+        discount = amount / (dcAmount+1) * cost;
       }
-      return  amount * Cost - discount;
+      return  amount * cost - discount;
     }
   }
 }

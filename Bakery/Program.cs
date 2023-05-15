@@ -97,7 +97,7 @@ namespace Bakery
         }
         Console.WriteLine($"{kvp.Value[0]}");
         index++;
-        totalPrice += pastry.FindDiscountedPrice(kvp.Value[0]);
+        totalPrice += pastry.FindDiscountedPrice(kvp.Value[0],kvp.Value[1],kvp.Value[2]);
       }
       Console.WriteLine($"\nyour current Total price is ${totalPrice}");
       string choice = (Console.ReadLine()).ToLower();
@@ -109,7 +109,7 @@ namespace Bakery
       totalPrice = 0;
       foreach(KeyValuePair<string,int[]> kvp in menuList)
       {
-        totalPrice += pastry.FindDiscountedPrice(kvp.Value[0]);
+        totalPrice += pastry.FindDiscountedPrice(kvp.Value[0],kvp.Value[1],kvp.Value[2]);
       }
       Console.WriteLine($"Your total price is ${totalPrice}");
 

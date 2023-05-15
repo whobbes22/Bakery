@@ -37,7 +37,7 @@ namespace Bakery.Tests
     {
       int amount = 3;
       Bread bread = new Bread(5,3);
-      int discountedPrice = bread.FindDiscountedPrice(amount);
+      int discountedPrice = bread.FindDiscountedPrice(amount,5,3);
       Assert.AreEqual(discountedPrice,10);
     }
 
@@ -48,7 +48,7 @@ namespace Bakery.Tests
     {
       int amount = 4;
       Pastry pastry = new Pastry(2,4,"pat");
-      int dP = pastry.FindDiscountedPrice(amount);
+      int dP = pastry.FindDiscountedPrice(amount,2,4);
       Assert.AreEqual(dP,6);
 
     }
