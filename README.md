@@ -7,7 +7,7 @@
 ## Technologies Used
 
 * _C#_
-* _Microsoft.NET.Sdk_
+* _Microsoft.NET.Sdk 6.0_
 * _MSTest_
 
 ## Description
@@ -23,7 +23,7 @@ _This is a terminal application that allows the user to go to the store and buy 
 
 ## Known Bugs
 
-* _No known bugs as of 4/21/23_
+* _No known bugs as of 5/14/23_
 
 ## License
 MIT License

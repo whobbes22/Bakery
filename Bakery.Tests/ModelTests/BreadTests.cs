@@ -33,7 +33,7 @@ namespace Bakery.Tests
     }
 
     [TestMethod]
-    public void FindDiscountedCost_ReturnActualCost_int()
+    public void FindDiscountedPrice_ReturnActualCost_int()
     {
       int amount = 3;
       Bread bread = new Bread(5,2);
