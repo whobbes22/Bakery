@@ -23,7 +23,7 @@ namespace Bakery.Models
 
     public void AddAmountToKey(string key,int amount)
     {
-      MenuList[key][0] = amount; // I think this is not correct
+      MenuList[key][0] = amount;
 
     }
 
@@ -31,8 +31,9 @@ namespace Bakery.Models
     {
       int[] arr = {0,cost,dcPrice};
       MenuList.Add(key,arr);
-      Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~");
-      Console.WriteLine($"Amount: {MenuList[key][0]}, Cost: {MenuList[key][1]}, Discount: {MenuList[key][2]}");
+      // test consoles
+      // Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~");
+      // Console.WriteLine($"Amount: {MenuList[key][0]}, Cost: {MenuList[key][1]}, Discount: {MenuList[key][2]}");
       //Console.WriteLine($"menuList. values: {MenuList.Values}");
     }
   }

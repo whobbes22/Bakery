@@ -36,8 +36,8 @@ namespace Bakery.Tests
     public void FindDiscountedCost_ReturnActualCost_int()
     {
       int amount = 3;
-      Bread bread = new Bread(5,3);
-      int discountedPrice = bread.FindDiscountedPrice(amount,5,3);
+      Bread bread = new Bread(5,2);
+      int discountedPrice = bread.FindDiscountedPrice(amount,5,2);
       Assert.AreEqual(discountedPrice,10);
     }
 
@@ -47,14 +47,14 @@ namespace Bakery.Tests
     public void FindDiscountedCostPastry_ReturnActualCost_int()
     {
       int amount = 4;
-      Pastry pastry = new Pastry(2,4,"pat");
-      int dP = pastry.FindDiscountedPrice(amount,2,4);
+      Pastry pastry = new Pastry(2,3,"pat");
+      int dP = pastry.FindDiscountedPrice(amount,2,3);
       Assert.AreEqual(dP,6);
 
     }
 
     [TestMethod]
-    public void ReportDictionary_ReturnDictionary_Dictionary()
+    public void GetAll_ReturnDictionary_Dictionary()
     {
       Pastry pastry = new Pastry(2,4,"Pastry");
       Dictionary<string,int[]> Dict = new Dictionary<string, int[]>() 
